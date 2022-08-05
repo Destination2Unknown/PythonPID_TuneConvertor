@@ -104,11 +104,14 @@ class gui(object):
         self.status_frame.grid(row=2, column=0, columnspan=1, sticky="NESW")
         self.root.grid_rowconfigure(0, weight=1)
         self.root.grid_columnconfigure(0, weight=1)
+        
+        #gui
+        self.root.mainloop()
 
     def reset(self):
-        self.fromP.insert(0, "1.7701")
-        self.fromI.insert(0, "2.7706")
-        self.fromD.insert(0, "0.1283")
+        self.fromP.insert(0, "1.275")
+        self.fromI.insert(0, "0.0125")
+        self.fromD.insert(0, "13.333")
         self.fromPunit.set("Kp")
         self.fromIunit.set("Ki (1/s)")
         self.fromDunit.set("Kd (s)")
@@ -245,10 +248,9 @@ class gui(object):
                 elif str(self.radioToType.get())=="Independent" and str(self.radioToTime.get())=="Minutes":
                     self.toP.set(self.thisP)
                     self.toI.set(round(self.thisP/self.thisI,5))
-                    self.toD.set(round(self.thisP*self.thisD,5))
+                    self.toD.set(round(self.thisP*self.thisD,5))      
 
         except Exception as e:
             self.statustext.set('Error: ' + str(e))
         
 home=gui()
-home.root.mainloop()
